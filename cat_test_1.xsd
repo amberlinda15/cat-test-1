@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<emp:schema xmlns:emp = "http://www.w3.org/2001/XMLSchema">
+	<emp:element name = "Company">
+		<emp:complexType>
+		<emp:sequence>
+			<emp:element name="Employee" maxOccurs = "unbounded">
+				<emp:complexType>
+				<emp:sequence>
+					<emp:element name="Emp-id" type="emp:string"></emp:element>
+					<emp:element name="Emp-name" type="emp:string"></emp:element>
+					<emp:element name="Emp-age" type="emp:integer"></emp:element>
+					<emp:element name="Emp-salary" type="emp:integer">
+						<emp:simpleType>
+							<emp:restriction base="emp:integer">
+								<emp:minInclusive value="50000"/>
+								<emp:maxInclusive value="200000"/>
+							</emp:restriction>
+						</emp:simpleType>
+					</emp:element>
+					<emp:element name="Emp-emailid" type="emp:string"></emp:element>
+					<emp:element name="Emp-Phonenum" type="emp:integer"></emp:element>
+					<emp:element name="Emp-designation" type="emp:string"></emp:element>
+				</emp:sequence>
+				</emp:complexType>
+			</emp:element>
+		</emp:sequence>
+		</emp:complexType>
+		<emp:unique name="uniqueId">
+			<emp:selector xpath="Employee"/>
+			<emp:field xpath="Emp-id"/>
+		</emp:unique>
+	</emp:element>
+</emp:schema>
